@@ -87,8 +87,8 @@ def database(self):
         for files in self.files:
             self.filePath = os.path.join(self.destinationDirectory, files)
             cur.execute("INSERT INTO tbl_txtFiles (col_txtFiles,col_timeStamp) VALUES (?,?)",
-                        (files, str(time.ctime(os.path.getmtime(self.filePath))),))
-            print(self.filePath, str(time.ctime(os.path.getmtime(self.filePath))))
+                        (files, (os.path.getmtime(self.filePath))),)
+            print(self.filePath, (os.path.getmtime(self.filePath)))
 
         conn.commit()
     conn.close()
